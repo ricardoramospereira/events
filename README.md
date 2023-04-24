@@ -1,5 +1,5 @@
 # events
-[![Bower](https://img.shields.io/bower/l/django)](https://github.com/ricardoramospereira/nutri/blob/main/LICENSE)
+[![Bower](https://img.shields.io/bower/l/django)](https://github.com/ricardoramospereira/events/blob/main/LICENSE)
 
 ⚠️ Under development ⚠️
 
