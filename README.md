@@ -35,9 +35,10 @@ Event Management Software:
 # How to run the project
 Requirements = python==3.9.12 | django==4.2
 
+
 ```bash
 # clone repository
-git clone https://github.com/ricardoramospereira/nutri.git
+git clone https://github.com/ricardoramospereira/events.git
 
 # install dependencies
 pillow==9.5.0
