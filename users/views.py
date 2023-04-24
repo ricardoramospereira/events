@@ -46,3 +46,19 @@ def register(request):
             messages.add_message(request, constants.ERROR, 'Erro interno do sistema')
             return redirect('register')
 
+
+def login(request):
+    if request.method == "GET":
+        return render(request, 'login.html')
+    elif request.method == "POST":
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+
+        user = auth.authenticate(username=username, password=password)
+
+        if not user:
+            messages.add_message(request, constants.ERROR, 'Usuário ou senha inválidos')
+            return redirect('login')
+        
+        auth.login(request, user)
+        return redirect('/')
