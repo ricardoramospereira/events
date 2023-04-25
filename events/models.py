@@ -10,6 +10,7 @@ class Event(models.Model):
     final_date  = models.DateField()
     workload    = models.IntegerField()
     logo        = models.FileField(upload_to="logos")
+    participant = models.ManyToManyField(User, related_name="event_participant", null=True)
 
     # color palette
     primary_color    = models.CharField(max_length=7)

@@ -1,0 +1,63 @@
+{% extends "bases/base_event.html" %}
+{% load static %}
+
+{% block 'importations' %}
+<link href="{% static 'evento/css/gerenciar_evento.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block 'content' %}
+<div class="container">
+    <br>
+    {% if messages %}
+    {% for message in messages %}
+    <div class="alert {{ message.tags }}">{{ message }}</div>
+    {% endfor %}
+    {% endif %}
+    <br>
+    <div class="row">
+        <div class="col-md-2">
+            <img width="100%" src="/media/{{event.logo}}">
+            <br>
+            <br>
+            <h3>{{evento.nome}}</h3>
+        </div>
+        <div class="col-md">
+            <div class="row">
+                <div class="col-md-2">
+                    <span class="badge rounded-pill text-bg-danger"><a class="link" href=""> Participantes</a></span>
+                </div>
+                <div class=" col-md-2">
+                    <span class="badge rounded-pill text-bg-danger"><a class="link" href="">Certificados</a></span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <div class="row">
+        <h5>{{event.participant.all.count}} Participantes</h5>
+        <div class="col-md-4">
+            <table>
+                <tr>
+                    <th>Nome</th>
+                    <th>E-mail</th>
+                </tr>
+                {% for participant in participants %}
+                <tr class="{% cycle 'linha' 'linha2' %}">
+                    <td>{{participant.username}}</td>
+                    <td>{{participant.email}}</td>
+                </tr>
+                {% endfor %}
+            </table>
+            <br>
+            <div class="row">
+                <div class="col-md text-center">
+                    <p>{{event.participant.all.count}}</p>
+                </div>
+                <div class="col-md ">
+                    <a href="#" class="btn-principal" style="text-decoration: none;">Exportar CSV</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,36 @@
+{% extends 'bases/base_event.html' %}
+{% block 'content' %}
+<br>
+<br>
+<div class="container">
+    <div class="row">
+        <div class="col-md-3">
+            {% if messages %}
+            {% for message in messages %}
+            <div class="alert {{ message.tags }}">{{ message }}</div>
+            {% endfor %}
+            {% endif %}
+            <img width="100%" src="{{event.logo.url}}">
+            <br>
+            <br>
+            <br>
+            <h3>{{event.name}}</h3>
+        </div>
+        <hr>
+        <div class="col-md-6">
+            <h5>{{event.description}}
+                <br>
+                <p>{{event.start_date}} a {{event.final_date}}</p>
+
+                {% if request.user in event.participant.all %}
+                <input style="border-color: green;" type="submit" class="btn-principal" value="JÁ ESTÁ PARTICIPANDO"
+                    disabled>
+                {% else%}
+                <form action="{% url 'register_event' event.id %}" method="POST">{% csrf_token %}
+                    <input type="submit" class="btn-principal" value="QUERO PARTICIPAR">
+                </form>
+                {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}
